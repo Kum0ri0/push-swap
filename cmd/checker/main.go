@@ -2,6 +2,8 @@ package main
 
 import (
 	"fmt"
+	"os"
+	"push-swap/internal/parse"
 	"push-swap/internal/stack"
 )
 
@@ -16,5 +18,12 @@ func main() {
 	 New.Executer("pa")
 	 New.Executer("pa")
 	 New.Executer("pa")
-	 fmt.Println(New.EstResolu()) 
+	 fmt.Println(New.EstResolu())  
+	 NewEtat, err := parse.Parse(os.Args[1:])
+	 if err != nil {
+		fmt.Println(err)
+		return 
+	 }
+	 fmt.Printf("%v \n", NewEtat)
+	 
 }
