@@ -38,7 +38,7 @@ func (e *Etat) Executer(s string) bool {
 	case "rrr":
 		e.Rrr()
 	default:
-		return false 
+		return false
 	}
-	return true 
+	return true
 }

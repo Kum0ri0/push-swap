@@ -6,11 +6,11 @@ import (
 	"strings"
 )
 
-func Parse(s  []string) ([]int, error) {
-	carte := map[int]bool{} 
+func Parse(s []string) ([]int, error) {
+	carte := map[int]bool{}
 	text := []string{}
 
-	for _ , v := range s {
+	for _, v := range s {
 		mot := strings.Fields(v)
 		text = append(text, mot...)
 	}
