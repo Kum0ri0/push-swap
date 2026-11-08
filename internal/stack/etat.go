@@ -46,5 +46,4 @@ func (e *Etat) Executer(s string) bool {
 
 func (e *Etat) Coups() []string {
 	return e.coups
-
 }
