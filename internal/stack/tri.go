@@ -46,6 +46,10 @@ func (e *Etat) Trier() {
 			e.TrierDeux()
 		case 3:
 			e.TrierTrois()
+		case 4:
+			e.TrierCinq()
+		case 5:
+			e.TrierCinq()
 	}
 }
 
@@ -60,7 +64,32 @@ func (p *Pile) IndexMin() int {
 	return IndexMin
 }
 
-func (e *Etat) AmenerEnHaut() {
-	
+func (e *Etat) AmenerEnHaut(i int) {
+	n := e.a.Taille()
 
+	nbRa := (n - 1) - i                      
+	nbRra := i + 1               
+
+	if nbRa <= nbRra {
+		for k := 0; k < nbRa; k++ {    
+			e.Executer("ra")           
+		}
+	} else {
+		for k := 0; k < i + 1; k++ {    
+			e.Executer("rra")           
+		}
+	}
+}
+
+
+func (e *Etat) TrierCinq() {
+	for e.a.Taille() > 3 {         
+		e.AmenerEnHaut(e.a.IndexMin())          
+		e.Executer("pb")               
+	}
+	e.TrierTrois()             
+
+	for e.b.Taille() > 0 {        
+		e.Executer("pa")               
+	}
 }
