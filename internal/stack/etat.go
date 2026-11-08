@@ -40,5 +40,11 @@ func (e *Etat) Executer(s string) bool {
 	default:
 		return false
 	}
+	e.coups = append(e.coups, s)
 	return true
+}
+
+func (e *Etat) Coups() []string {
+	return e.coups
+
 }

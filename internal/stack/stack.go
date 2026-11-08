@@ -3,6 +3,7 @@ package stack
 type Etat struct {
 	a Pile
 	b Pile
+	coups []string 
 }
 
 func NewEtat(nombres []int) *Etat {
