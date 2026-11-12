@@ -5,12 +5,10 @@ import (
 	"os"
 	"push-swap/internal/parse"
 	"push-swap/internal/stack"
-
 )
 
-
 func main() {
-		if len(os.Args) == 1 {
+	if len(os.Args) == 1 {
 		return
 	}
 	nombres, err := parse.Parse(os.Args[1:])
@@ -23,10 +21,9 @@ func main() {
 	}
 	Newetat := stack.NewEtat(nombres)
 	Newetat.Trier()
-	
+
 	for _, v := range Newetat.Coups() {
 		fmt.Println(v)
 	}
-
 
 }
