@@ -22,7 +22,7 @@ func main() {
 	Newetat := stack.NewEtat(nombres)
 	Newetat.Trier()
 
-	for _, v := range Newetat.Coups() {
+	for _, v := range stack.Nettoyer(Newetat.Coups()) {
 		fmt.Println(v)
 	}
 

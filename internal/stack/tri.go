@@ -1,5 +1,7 @@
 package stack
 
+var inverse = map[string]string{"pa": "pb", "pb": "pa", "ra": "rra", "rra": "ra"}
+
 func (p *Pile) IndexMax() int {
 
 	indexMax := 0
@@ -38,6 +40,10 @@ func (e *Etat) TrierTrois() {
 
 func (e *Etat) Trier() {
 	if e.EstResolu() {
+		return
+	}
+	if e.a.EstTrieeEnRond() {
+		e.AmenerEnHaut(e.a.IndexMin())
 		return
 	}
 	switch e.a.Taille() {
@@ -129,5 +135,33 @@ func (e *Etat) TrierGrand() {
 		for e.b.Taille() > 0 {
 			e.Executer("pa")
 		}
+		if e.EstResolu() {
+			return
+		}
 	}
+}
+
+func (p *Pile) EstTrieeEnRond() bool {
+	n := p.Taille()
+	compteur := 0
+	for i := 0; i < n; i++ {
+		suiv := (i + 1) % n
+		if p.contenu[i] < p.contenu[suiv] {
+			compteur++
+		}
+	}
+	return compteur <= 1
+}
+
+func Nettoyer(coups []string) []string {
+	resultat := []string{}
+	for _, c := range coups {
+		n := len(resultat)
+		if n > 0 && inverse[resultat[n-1]] == c {
+			resultat = resultat[:n-1]
+		} else {
+			resultat = append(resultat, c)
+		}
+	}
+	return resultat
 }
